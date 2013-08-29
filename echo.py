@@ -4,15 +4,6 @@ from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 
 class EchoHandler(BaseHTTPRequestHandler):
 
-    def do_GET(self):
-        request_path = self.path
-        print("Request\n")
-        print(request_path)
-        print(self.headers)
-        
-        self.send_response(200)
-        #self.send_header("Set-Cookie", "test=localhost")
-        
     def do_POST(self):
         request_path = self.path
         print("Request\n")
@@ -28,6 +19,16 @@ class EchoHandler(BaseHTTPRequestHandler):
         print(request_headers)
         print(self.rfile.read(length)) #http://docs.python.org/2/library/socketserver.html
         self.send_response(200)
+
+    def do_GET(self):
+        request_path = self.path
+        print("Request\n")
+        print(request_path)
+        print(self.headers)
+        
+        self.send_response(200)
+        #self.send_header("Set-Cookie", "test=localhost")
+        
     
     do_PUT = do_POST
     do_DELETE = do_GET
